@@ -11,6 +11,7 @@ A command-line installer for cloudflared with cross-platform support.
 
 ## Requirements
 
+- Go 1.21 or later
 - Internet connection for downloading cloudflared
 
 ## Usage
