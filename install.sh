@@ -78,7 +78,5 @@ rm -rf ${TMP_DIR}
 echo -e "${GREEN}CyberPAM Agent installed successfully!${NC}"
 echo -e "${BLUE}Starting interactive setup...${NC}"
 
-# Run the program in interactive mode
-echo -e "${BLUE}Please enter your Cloudflare tunnel token when prompted${NC}"
-exec < /dev/tty
-sudo /usr/local/bin/cyberpamagent
+# Run the program in interactive mode, ensuring stdin is connected to the terminal
+sudo /usr/local/bin/cyberpamagent < /dev/tty
