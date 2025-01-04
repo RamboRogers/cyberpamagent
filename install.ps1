@@ -43,9 +43,9 @@ try {
     }
 
     Write-Host "CyberPAM Agent installed successfully!" -ForegroundColor Green
-    Write-Host "Starting CyberPAM Agent..." -ForegroundColor Blue
+    Write-Host "Starting interactive setup..." -ForegroundColor Blue
 
-    # Run the program
+    # Run the program in interactive mode
     & "$installDir\cyberpamagent.exe"
 }
 catch {

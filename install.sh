@@ -76,7 +76,7 @@ fi
 rm -rf ${TMP_DIR}
 
 echo -e "${GREEN}CyberPAM Agent installed successfully!${NC}"
-echo -e "${BLUE}Starting CyberPAM Agent...${NC}"
+echo -e "${BLUE}Starting interactive setup...${NC}"
 
-# Run the program
-cyberpamagent
+# Run the program in interactive mode
+/usr/local/bin/cyberpamagent
