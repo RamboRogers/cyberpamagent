@@ -1,66 +1,101 @@
-# 🔒 CyberPAM Agent
+# CyberPAM Agent
 
-<div align="center">
+A command-line installer for cloudflared with cross-platform support.
 
-[![License: CC](https://img.shields.io/badge/License-CC-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-blue)]()
-[![Version](https://img.shields.io/badge/version-1.0.0-green)]()
+## Features
 
-<p>Secure Cloudflare tunnel management made easy. Install, configure, and manage your Cloudflare tunnels with a simple command-line interface.</p>
+- Cross-platform support (Linux, macOS, Windows)
+- Automatic system detection
+- Secure installation with checksum verification
+- Service management (install, configure, start, stop, status)
 
-</div>
+## Requirements
 
-## 🚀 Quick Install
+- Go 1.21 or later
+- Internet connection for downloading cloudflared
 
-### 🐧 Linux & 🍎 macOS
-
-```bash
-curl -L https://raw.githubusercontent.com/RamboRogers/cyberpamagent/main/install.sh | sh -i
-```
-
-### 🪟 Windows PowerShell
-
-```powershell
-iwr -useb https://raw.githubusercontent.com/RamboRogers/cyberpamagent/main/install.ps1 | iex
-```
-
-## ✨ Features
-
-- 🔒 **Secure Installation**: Automated installation and configuration of Cloudflare tunnels
-- 🛠️ **Easy Setup**: Simple interactive setup process
-- 🔄 **Service Management**: Start, stop, and monitor your tunnel service
-- 📝 **Logging**: Easy access to service logs for monitoring
-- 🔐 **Token Management**: Secure handling of your Cloudflare tunnel tokens
-
-## 🔧 Usage
+## Usage
 
 ```bash
-# Install and configure
-cyberpamagent
+# Install cloudflared
+./cyberpamagent -install
 
-# Install only
-cyberpamagent -install
+# Configure with your tunnel token
+./cyberpamagent -token "your-token-here"
 
-# Configure with token
-cyberpamagent -token YOUR_TOKEN
+# Check service status
+./cyberpamagent -status
 
-# Check status
-cyberpamagent -status
+# Start the service
+./cyberpamagent -start
 
-# View logs
-cyberpamagent -logs
+# Stop the service
+./cyberpamagent -stop
+
+# View service logs
+./cyberpamagent -logs
+
+# Uninstall cloudflared
+./cyberpamagent -uninstall
 ```
 
-## ⚖️ License
+## Building and Distribution
 
-This project is licensed under the CC-BY-ND License. Use at your own risk.
+### Building All Platforms
 
-<div align="center">
+To build binaries for all supported platforms:
 
-### Connect With Me 🤝
+```bash
+# Make the build script executable
+chmod +x build.sh
 
-[![GitHub](https://img.shields.io/badge/GitHub-RamboRogers-181717?style=for-the-badge&logo=github)](https://github.com/RamboRogers)
-[![Twitter](https://img.shields.io/badge/Twitter-@rogerscissp-1DA1F2?style=for-the-badge&logo=twitter)](https://twitter.com/rogerscissp)
-[![Website](https://img.shields.io/badge/Web-matthewrogers.org-00ADD8?style=for-the-badge&logo=google-chrome)](https://matthewrogers.org)
+# Run the build script
+./build.sh
+```
 
-</div>
+This will create binaries in the `bins/cyberpamagent/bins` directory:
+- `cyberpamagent.exe` (Windows amd64)
+- `cyberpamagent-linux-amd64` (Linux amd64)
+- `cyberpamagent-linux-arm64` (Linux arm64)
+- `cyberpamagent-darwin-amd64` (macOS Intel)
+- `cyberpamagent-darwin-arm64` (macOS Apple Silicon)
+
+A `checksums.txt` file will also be generated containing SHA-256 checksums for all binaries.
+
+### Testing
+
+To test the binary for your current platform:
+
+```bash
+# Make the test script executable
+chmod +x test.sh
+
+# Run the test script with your token
+CLOUDFLARE_TOKEN="your-token-here" ./test.sh
+```
+
+## Supported Platforms
+
+- Linux (amd64, arm64)
+  - Debian/Ubuntu: .deb package
+  - RHEL/CentOS: .rpm package
+  - Others: direct binary
+- macOS (amd64, arm64)
+  - Intel and Apple Silicon
+  - Uses .pkg installer
+- Windows (amd64)
+  - Uses Windows Service
+
+## Development
+
+To modify or contribute to the project:
+
+1. Install Go 1.21 or later
+2. Clone the repository
+3. Install dependencies: `go mod tidy`
+4. Make your changes
+5. Build and test: `go build && ./cyberpamagent`
+
+## License
+
+MIT License
