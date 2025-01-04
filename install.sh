@@ -78,5 +78,5 @@ rm -rf ${TMP_DIR}
 echo -e "${GREEN}CyberPAM Agent installed successfully!${NC}"
 echo -e "${BLUE}Starting interactive setup...${NC}"
 
-# Run the program in interactive mode
-/usr/local/bin/cyberpamagent
+# Run the program in interactive mode with sudo to ensure proper permissions
+sudo /usr/local/bin/cyberpamagent
