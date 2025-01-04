@@ -1,101 +1,66 @@
-# CyberPAM Agent
+# 🔒 CyberPAM Agent
 
-A command-line installer for cloudflared with cross-platform support.
+<div align="center">
 
-## Features
+[![License: CC](https://img.shields.io/badge/License-CC-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-blue)]()
+[![Version](https://img.shields.io/badge/version-1.0.0-green)]()
 
-- Cross-platform support (Linux, macOS, Windows)
-- Automatic system detection
-- Secure installation with checksum verification
-- Service management (install, configure, start, stop, status)
+<p>Secure Cloudflare tunnel management made easy. Install, configure, and manage your Cloudflare tunnels with a simple command-line interface.</p>
 
-## Requirements
+</div>
 
-- Go 1.21 or later
-- Internet connection for downloading cloudflared
+## 🚀 Quick Install
 
-## Usage
+### 🐧 Linux & 🍎 macOS
 
 ```bash
-# Install cloudflared
-./cyberpamagent -install
-
-# Configure with your tunnel token
-./cyberpamagent -token "your-token-here"
-
-# Check service status
-./cyberpamagent -status
-
-# Start the service
-./cyberpamagent -start
-
-# Stop the service
-./cyberpamagent -stop
-
-# View service logs
-./cyberpamagent -logs
-
-# Uninstall cloudflared
-./cyberpamagent -uninstall
+curl -L https://raw.githubusercontent.com/RamboRogers/cyberpamagent/main/install.sh | sh -i
 ```
 
-## Building and Distribution
+### 🪟 Windows PowerShell
 
-### Building All Platforms
+```powershell
+iwr -useb https://raw.githubusercontent.com/RamboRogers/cyberpamagent/main/install.ps1 | iex
+```
 
-To build binaries for all supported platforms:
+## ✨ Features
+
+- 🔒 **Secure Installation**: Automated installation and configuration of Cloudflare tunnels
+- 🛠️ **Easy Setup**: Simple interactive setup process
+- 🔄 **Service Management**: Start, stop, and monitor your tunnel service
+- 📝 **Logging**: Easy access to service logs for monitoring
+- 🔐 **Token Management**: Secure handling of your Cloudflare tunnel tokens
+
+## 🔧 Usage
 
 ```bash
-# Make the build script executable
-chmod +x build.sh
+# Install and configure
+cyberpamagent
 
-# Run the build script
-./build.sh
+# Install only
+cyberpamagent -install
+
+# Configure with token
+cyberpamagent -token YOUR_TOKEN
+
+# Check status
+cyberpamagent -status
+
+# View logs
+cyberpamagent -logs
 ```
 
-This will create binaries in the `bins/cyberpamagent/bins` directory:
-- `cyberpamagent.exe` (Windows amd64)
-- `cyberpamagent-linux-amd64` (Linux amd64)
-- `cyberpamagent-linux-arm64` (Linux arm64)
-- `cyberpamagent-darwin-amd64` (macOS Intel)
-- `cyberpamagent-darwin-arm64` (macOS Apple Silicon)
+## ⚖️ License
 
-A `checksums.txt` file will also be generated containing SHA-256 checksums for all binaries.
+This project is licensed under the CC-BY-ND License. Use at your own risk.
 
-### Testing
+<div align="center">
 
-To test the binary for your current platform:
+### Connect With Me 🤝
 
-```bash
-# Make the test script executable
-chmod +x test.sh
+[![GitHub](https://img.shields.io/badge/GitHub-RamboRogers-181717?style=for-the-badge&logo=github)](https://github.com/RamboRogers)
+[![Twitter](https://img.shields.io/badge/Twitter-@rogerscissp-1DA1F2?style=for-the-badge&logo=twitter)](https://twitter.com/rogerscissp)
+[![Website](https://img.shields.io/badge/Web-matthewrogers.org-00ADD8?style=for-the-badge&logo=google-chrome)](https://matthewrogers.org)
 
-# Run the test script with your token
-CLOUDFLARE_TOKEN="your-token-here" ./test.sh
-```
-
-## Supported Platforms
-
-- Linux (amd64, arm64)
-  - Debian/Ubuntu: .deb package
-  - RHEL/CentOS: .rpm package
-  - Others: direct binary
-- macOS (amd64, arm64)
-  - Intel and Apple Silicon
-  - Uses .pkg installer
-- Windows (amd64)
-  - Uses Windows Service
-
-## Development
-
-To modify or contribute to the project:
-
-1. Install Go 1.21 or later
-2. Clone the repository
-3. Install dependencies: `go mod tidy`
-4. Make your changes
-5. Build and test: `go build && ./cyberpamagent`
-
-## License
-
-MIT License
+</div>
