@@ -15,7 +15,7 @@
 ### 🐧 Linux & 🍎 macOS
 
 ```bash
-curl -L https://raw.githubusercontent.com/RamboRogers/cyberpamagent/main/install.sh | sh -i
+curl -L https://raw.githubusercontent.com/RamboRogers/cyberpamagent/main/install.sh | sh
 ```
 
 ### 🪟 Windows PowerShell
