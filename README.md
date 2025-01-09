@@ -20,6 +20,8 @@ curl -L https://raw.githubusercontent.com/RamboRogers/cyberpamagent/main/install
 
 ### 🪟 Windows PowerShell
 
+*Run as Administrator*
+
 ```powershell
 iwr -useb https://raw.githubusercontent.com/RamboRogers/cyberpamagent/main/install.ps1 | iex
 ```

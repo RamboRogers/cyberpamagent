@@ -1,4 +1,11 @@
 # PowerShell script to install CyberPAM Agent
+
+# Check if running as administrator
+if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host "This script must be run as Administrator. Please restart PowerShell as Administrator." -ForegroundColor Red
+    exit 1
+}
+
 $ErrorActionPreference = "Stop"
 
 Write-Host "Installing CyberPAM Agent..." -ForegroundColor Blue
@@ -23,8 +30,8 @@ try {
     # Find the exe
     $exePath = Get-ChildItem -Path $tempDir -Filter "cyberpamagent.exe" -Recurse | Select-Object -First 1
 
-    # Create destination directory in user's profile
-    $installDir = "$env:USERPROFILE\.cyberpamagent"
+    # Create destination directory in Program Files
+    $installDir = "${env:ProgramFiles}\CyberPAM"
     New-Item -ItemType Directory -Force -Path $installDir | Out-Null
 
     # Copy the exe
@@ -32,13 +39,13 @@ try {
     Copy-Item -Path $exePath.FullName -Destination "$installDir\cyberpamagent.exe" -Force
 
     # Add to PATH if not already there
-    $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
-    if ($userPath -notlike "*$installDir*") {
+    $systemPath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+    if ($systemPath -notlike "*$installDir*") {
         Write-Host "Adding CyberPAM Agent to PATH..." -ForegroundColor Blue
         [Environment]::SetEnvironmentVariable(
             "Path",
-            "$userPath;$installDir",
-            "User"
+            "$systemPath;$installDir",
+            "Machine"
         )
     }
 
